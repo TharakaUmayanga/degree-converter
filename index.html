@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Degree to DMS Converter with PyScript</title>
+    <link rel="stylesheet" href="https://pyscript.net/latest/pyscript.css">
+    <script defer src="https://pyscript.net/latest/pyscript.js"></script>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 20px;
+            background-color: #f4f4f4;
+        }
+        .container {
+            max-width: 600px;
+            margin: 0 auto;
+            background: #fff;
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        }
+        h1 {
+            text-align: center;
+        }
+        input, button {
+            width: 100%;
+            padding: 10px;
+            margin: 10px 0;
+        }
+        .result {
+            margin-top: 20px;
+            padding: 10px;
+            background: #e9ecef;
+            border-radius: 8px;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Degree to DMS Converter</h1>
+        <input type="number" id="degreesInput" placeholder="Enter degrees">
+        <button onclick="convertToDMS()">Convert to DMS</button>
+        <div class="result" id="dmsResult"></div>
+
+        <h1>DMS to Degrees Converter</h1>
+        <input type="number" id="dmsDegrees" placeholder="Degrees">
+        <input type="number" id="dmsMinutes" placeholder="Minutes">
+        <input type="number" id="dmsSeconds" placeholder="Seconds">
+        <button onclick="convertToDegrees()">Convert to Degrees</button>
+        <div class="result" id="degreesResult"></div>
+    </div>
+
+    <py-script>
+        from js import document
+
+        def convert_to_dms(*args):
+            degrees = float(document.getElementById('degreesInput').value)
+            d = int(degrees)
+            minfloat = (degrees - d) * 60
+            m = int(minfloat)
+            secfloat = (minfloat - m) * 60
+            s = round(secfloat, 2)
+
+            result = f"{d}° {m}' {s}\""
+            document.getElementById('dmsResult').innerText = result
+
+        def convert_to_degrees(*args):
+            d = float(document.getElementById('dmsDegrees').value)
+            m = float(document.getElementById('dmsMinutes').value)
+            s = float(document.getElementById('dmsSeconds').value)
+            degrees = d + (m / 60) + (s / 3600)
+
+            result = f"{degrees:.6f}°"
+            document.getElementById('degreesResult').innerText = result
+
+        def setup_buttons():
+            document.querySelector('button[onclick="convertToDMS()"]').onclick = convert_to_dms
+            document.querySelector('button[onclick="convertToDegrees()"]').onclick = convert_to_degrees
+
+        setup_buttons()
+    </py-script>
+</body>
+</html>
