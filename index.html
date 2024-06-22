@@ -12,6 +12,9 @@
             margin: 0;
             padding: 20px;
             background-color: #f4f4f4;
+            display: flex;
+            flex-direction: column;
+            min-height: 100vh;
         }
         header {
             background-color: #0073e6;
@@ -26,6 +29,7 @@
             padding: 20px;
             border-radius: 8px;
             box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            flex: 1;
         }
         h1 {
             text-align: center;
@@ -41,11 +45,17 @@
             background: #e9ecef;
             border-radius: 8px;
         }
+        footer {
+            background-color: #0073e6;
+            color: white;
+            text-align: center;
+            padding: 10px 0;
+        }
     </style>
 </head>
 <body>
     <header>
-        <h1>Degree Converter</h1>
+        <h1>Degree to DMS and DMS to Degree Converter</h1>
     </header>
     <div class="container">
         <h1>Degree to DMS Converter</h1>
@@ -60,6 +70,9 @@
         <button onclick="convertToDegrees()">Convert to Degrees</button>
         <div class="result" id="degreesResult"></div>
     </div>
+    <footer>
+        <p>This is an open source project to test PyScript</p>
+    </footer>
 
     <py-script>
         from js import document
