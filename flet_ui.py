@@ -11,19 +11,42 @@ def main(page: ft.Page):
 
     page.update()
 
-    info_card = ft.Card(
+    card_padding = 15
+
+    deg_dms_card = ft.Card(
         content=ft.Container(
             content=ft.Column(
                 [
                     ft.Text("Degrees to DMS"),
                     ft.TextField(label="Enter Degrees"),
+                    ft.Text(),
 
                     ft.TextButton("Calculate")
                 ],
 
             ),
             width=400,
-            padding=10,
+            padding=card_padding,
+
+        ),
+
+    )
+
+    dms_deg_card = ft.Card(
+        content=ft.Container(
+            content=ft.Column(
+                [
+                    ft.Text("DMS to Deg"),
+                    ft.TextField(label="Enter Degrees"),
+                    ft.TextField(label="Enter Minutes"),
+                    ft.TextField(label="Enter Seconds"),
+                    ft.Text(),
+                    ft.TextButton("Calculate")
+                ],
+
+            ),
+            width=400,
+            padding=card_padding,
 
         )
     )
@@ -38,10 +61,18 @@ def main(page: ft.Page):
     middle_col = ft.Column([
         ft.Row(
             [
-                info_card
+                deg_dms_card
             ],
             alignment=ft.MainAxisAlignment.CENTER
-        )]
+
+        ),
+        ft.Row(
+            [
+                dms_deg_card
+            ],
+            alignment=ft.MainAxisAlignment.CENTER
+        )],
+        spacing=30
 
     )
 
