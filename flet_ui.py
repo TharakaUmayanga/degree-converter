@@ -21,7 +21,7 @@ def main(page: ft.Page):
                     ft.TextField(label="Enter Degrees"),
                     ft.Text(),
 
-                    ft.TextButton("Calculate")
+                    ft.FilledButton("Calculate")
                 ],
 
             ),
@@ -41,7 +41,7 @@ def main(page: ft.Page):
                     ft.TextField(label="Enter Minutes"),
                     ft.TextField(label="Enter Seconds"),
                     ft.Text(),
-                    ft.TextButton("Calculate")
+                    ft.FilledButton("Calculate")
                 ],
 
             ),
